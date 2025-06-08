@@ -1,7 +1,7 @@
 'use strict'
-const config = require('../config')
+import config from '../config/index.js';
 
-module.exports = {
+export default {
   cacheBusting: config.dev.cacheBusting,
   transformAssetUrls: {
     video: ['src', 'poster'],

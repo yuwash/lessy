@@ -1,9 +1,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+import path from 'path'
+import prodEnv from './prod.env.js'
+import devEnv from './dev.env.js'
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-module.exports = {
+export default {
   build: {
-    env: require('./prod.env'),
+    env: prodEnv,
     index: path.resolve(__dirname, '../../public/index.html'),
     assetsRoot: path.resolve(__dirname, '../../public'),
     assetsSubDirectory: 'static',
@@ -17,7 +22,7 @@ module.exports = {
     productionGzipExtensions: ['js', 'css']
   },
   dev: {
-    env: require('./dev.env'),
+    env: devEnv,
     host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080,
     assetsSubDirectory: 'static',
