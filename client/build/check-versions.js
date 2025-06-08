@@ -1,12 +1,11 @@
 'use strict'
-const chalk = require('chalk')
-const semver = require('semver')
-const packageConfig = require('../package.json')
-const shell = require('shelljs')
+import chalk from 'chalk';
+import semver from 'semver';
+import packageConfig from '../package.json' with { type: "json" };
+import shell from 'shelljs';
+import { execSync } from 'child_process';
 
-function exec (cmd) {
-  return require('child_process').execSync(cmd).toString().trim()
-}
+const exec = cmd => execSync(cmd).toString().trim();
 
 const versionRequirements = [
   {
@@ -24,7 +23,7 @@ if (shell.which('npm')) {
   })
 }
 
-module.exports = function () {
+export default function () {
   const warnings = []
 
   for (let i = 0; i < versionRequirements.length; i++) {

@@ -1,11 +1,11 @@
 'use strict'
-const path = require('path')
-const config = require('../config')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const packageConfig = require('../package.json')
-const jsonImporter = require('node-sass-json-importer')
+import path from 'path';
+import config from '../config/index.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import packageConfig from '../package.json' assert { type: 'json' }
+import jsonImporter from 'node-sass-json-importer'
 
-exports.assetsPath = function (_path) {
+export function assetsPath (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory
@@ -13,7 +13,7 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
-exports.cssLoaders = function (options) {
+export function cssLoaders (options) {
   options = options || {}
 
   const cssLoader = {
@@ -28,7 +28,7 @@ exports.cssLoaders = function (options) {
     options: {
       sourceMap: options.sourceMap,
       plugins: () => [
-        require('autoprefixer')({
+        autoprefixer({
           browsers: ['last 2 versions'],
         }),
       ],
@@ -36,7 +36,7 @@ exports.cssLoaders = function (options) {
   }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders (loader, loaderOptions) { // eslint-disable-line no-unused-vars
     const loaders = []
 
     // Extract CSS when that option is specified
@@ -70,17 +70,16 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     scss: generateLoaders('sass', {
-      data: "@import 'src/styles/variables/index';",
-      importer: jsonImporter(),
+      additionalData: "@import 'src/styles/variables/index';",
     }),
   }
 }
 
 // Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
+export function styleLoaders (options) {
   const output = []
-  const loaders = exports.cssLoaders(options)
-
+  const loaders = cssLoaders(options)
+ 
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
@@ -92,8 +91,8 @@ exports.styleLoaders = function (options) {
   return output
 }
 
-exports.createNotifierCallback = () => {
-  const notifier = require('node-notifier')
+export const createNotifierCallback = () => {
+  const notifier = import('node-notifier') // eslint-disable-line @typescript-eslint/no-var-requires
 
   return (severity, errors) => {
     if (severity !== 'error') return

@@ -1,6 +1,6 @@
 const path = require('path')
 
-module.exports = {
+export default {
   rootDir: path.resolve(__dirname, '../'),
   moduleFileExtensions: [
     'js',
