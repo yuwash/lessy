@@ -3,7 +3,6 @@ import path from 'path';
 import config from '../config/index.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import packageConfig from '../package.json' assert { type: 'json' }
-import jsonImporter from 'node-sass-json-importer'
 
 export function assetsPath (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -69,7 +68,7 @@ export function cssLoaders (options) {
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    scss: generateLoaders('sass', {
+    scss: generateLoaders('sass', { // This will use sass-loader if it's installed
       additionalData: "@import 'src/styles/variables/index';",
     }),
   }

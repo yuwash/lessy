@@ -127,8 +127,20 @@
       text-align: center;
       font-weight: bold;
     }
-    .tasks-chart-data-created .tasks-chart-data-bar,
+    .tasks-chart-data-created .tasks-chart-data-bar {
+      background-color: var(--ly-color-grey-50);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      min-height: 1.5rem;
+
+      border-radius: .25rem .25rem 0 0;
+    }
+
     .tasks-chart-data-finished .tasks-chart-data-bar {
+      background-color: var(--ly-color-grey-90);
       position: absolute;
       bottom: 0;
       left: 0;
@@ -168,26 +180,18 @@
     }
   }
 
-  .tasks-chart-label-created::before,
-  .tasks-chart-data-created .tasks-chart-data-bar {
-    color: $ly-color-white;
-    background-color: $ly-color-grey-50;
+  .tasks-chart-label-created::before {
+    background-color: var(--ly-color-grey-50);
   }
-  .tasks-chart-label-finished::before,
-  .tasks-chart-data-finished .tasks-chart-data-bar {
-    color: $ly-color-white;
-    background-color: $ly-color-grey-90;
+  .tasks-chart-label-finished::before {
+    background-color: var(--ly-color-grey-90);
   }
 
   .tasks-chart-axis-day.selected {
-    border-bottom-color: $ly-color-pine-90;
-
     .tasks-chart-data-created .tasks-chart-data-bar {
-      color: $ly-color-grey-90;
-      background-color: $ly-color-pine-50;
+      background-color: var(--ly-color-pine-50);
     }
     .tasks-chart-data-finished .tasks-chart-data-bar {
-      color: $ly-color-white;
       background-color: $ly-color-pine-90;
     }
     .tasks-chart-label-day {

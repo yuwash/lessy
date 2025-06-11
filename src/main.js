@@ -21,18 +21,18 @@ import AppPage from './components/App/AppPage.vue'
 import AppMenu from './components/App/AppMenu.vue'
 import AppMenuLink from './components/App/AppMenuLink.vue'
 
-import LayoutApplication from './components/layouts/LayoutApplication'
-import LayoutDefault from './components/layouts/LayoutDefault'
-import LayoutDesign from './components/layouts/LayoutDesign'
-import LayoutEmpty from './components/layouts/LayoutEmpty'
-import LayoutProfile from './components/layouts/LayoutProfile'
-import LayoutSingleForm from './components/layouts/LayoutSingleForm'
+import LayoutApplication from './components/layouts/LayoutApplication.vue'
+import LayoutDefault from './components/layouts/LayoutDefault.vue'
+import LayoutDesign from './components/layouts/LayoutDesign.vue'
+import LayoutEmpty from './components/layouts/LayoutEmpty.vue'
+import LayoutProfile from './components/layouts/LayoutProfile.vue'
+import LayoutSingleForm from './components/layouts/LayoutSingleForm.vue'
 
-import LoadingPage from './components/general/LoadingPage'
+import LoadingPage from './components/general/LoadingPage.vue'
 
-import i18n from './locales'
+import i18n from './locales/index.js'
 import router from './router.js'
-import store from './store'
+import store from './store/index.js'
 
 import VTooltip from 'v-tooltip'
 
